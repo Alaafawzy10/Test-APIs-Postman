@@ -1,0 +1,46 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Postman",
+      "description": "Full Postman from zero in Arabic"
+    },
+    {
+      "title": "JAVA2",
+      "description": "Full JAVA OOP from zero in Arabic",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "title": "cypress",
+      "description": "Full cypress from zero in Arabic"
+    },
+    {
+      "title": "Java",
+      "description": "Full Java course from zero in Arabic",
+      "id": 5
+    },
+    {
+      "title": "Java",
+      "description": "Full Java course from zero in Arabic",
+      "id": 6
+    },
+    {
+      "title": "JAVA2",
+      "description": "Full JAVA OOP from zero in Arabic",
+      "id": 7
+    }
+  ],
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$irECLYPmn2itgLXxH6OknegaXGDTfdAaq.r9wvD6YqxNG/i1WbJea",
+      "id": 1
+    },
+    {
+      "email": "alaamahmoud4789@gmail.com",
+      "password": "$2a$10$F4hwWAbHndXsPm.EuE.OA.a510D1xvinM7oaPfVrjrMOFS/UIluu2",
+      "id": 2
+    }
+  ]
+}

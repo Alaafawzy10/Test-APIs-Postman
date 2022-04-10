@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "2b5ca3c8-3516-49cf-af47-94b0257d445f",
+		"name": "First Test APIs Project",
+		"description": "All the APIs that controls the course in QAcart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"var token =  jsonData.accessToken",
+							"",
+							"pm.environment.set(\"token\",token);",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n      \"email\": \"alaamahmoud4789@gmail.com\",\n      \"password\": \"Test123\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/signin",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post New Course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonFile = pm.response.json()",
+							"var courseID = jsonFile.id",
+							"pm.environment.set(\"courseID\", courseID);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Java\",\n    \"description\": \"Full Java course from zero in Arabic\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/660/courses/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"courses",
+						""
+					]
+				},
+				"description": "Post New Course in QAcart"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Courses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check that the API response code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check that the API response contains 'Postman'\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Postman\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/courses/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"courses",
+						""
+					]
+				},
+				"description": "Get all Courses in QAcart"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"title\": \"Selenium\",\n    \"description\": \"Full Selenium from zero in Arabic\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/660/courses/{{courseID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"courses",
+						"{{courseID}}"
+					]
+				},
+				"description": "Edit a specific Course"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/660/courses/{{courseID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"courses",
+						"{{courseID}}"
+					]
+				},
+				"description": "Get a specific Course"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/courses/{{courseID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"courses",
+						"{{courseID}}"
+					]
+				},
+				"description": "Delete a specific Course "
+			},
+			"response": []
+		},
+		{
+			"name": "Get Course After delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Check that the API response code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsYWFtYWhtb3VkNDc4OUBnbWFpbC5jb20iLCJpYXQiOjE2NDk1NDU2NTYsImV4cCI6MTY0OTU0OTI1Niwic3ViIjoiMiJ9.yE52hh49gacyu_MisZaLkqZoH_6fbIxFEeqa5acYdOw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/courses/{{courseID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"courses",
+						"{{courseID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
