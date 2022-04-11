@@ -76,8 +76,8 @@ Or you can simply download it from here https://github.com/Alaafawzy10/Test-APIs
   
 # Helpful Links
   ## These links helped me to solve some problems which it appeared to me during project creation and the learning process
-   - [https://www.youtube.com/watch?v=1zkgdLZEdwM&list=LL&index=2&t=584s]
-   - [https://www.youtube.com/watch?v=rQs18CWB8vY&list=LL&index=1&t=508s]
+   - <a href="https://www.youtube.com/watch?v=1zkgdLZEdwM&list=LL&index=2&t=584s">Link 1</a>
+   - <a href="https://www.youtube.com/watch?v=rQs18CWB8vY&list=LL&index=1&t=508s">Link 2</a>
   
 # About Software Tester
   <div align="center">
